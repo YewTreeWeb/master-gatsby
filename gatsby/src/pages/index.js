@@ -1,10 +1,10 @@
 import React from 'react'
-import { Layout } from '../components/Layout'
 
-export default function HomePage() {
-	return (
-		<Layout>
-			<p>Hey! I'm the home page</p>
-		</Layout>
-	)
+export default function HomePage () {
+  return (
+    // React fragment returns a ghost element. Allows to return more than one element
+    <>
+      <p>Hey! I'm the home page</p>
+    </>
+  )
 }
