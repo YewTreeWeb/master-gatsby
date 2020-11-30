@@ -1,4 +1,5 @@
 import { MdLocalPizza as icon } from 'react-icons/md'
+import { PriceInput } from '../components/Priceinputs'
 export default {
   // Computer Name
   name: 'pizza',
@@ -34,9 +35,10 @@ export default {
       name: 'price',
       title: 'Price',
       type: 'number',
-      description: 'How much the pizza costs (£)',
-      validation: Rule => Rule.min(10)
+      description: 'How much the pizza costs',
+      validation: Rule => Rule.min(10),
       // Todo: add custom input component
+      inputComponent: PriceInput
     },
     {
       name: 'toppings',
@@ -56,7 +58,7 @@ export default {
       toppings2: 'toppings.2.name',
       toppings2Veg: 'toppings.2.vegetarian',
       toppings3: 'toppings.3.name',
-      toppings3Veg: 'toppings.3.vegetarian',
+      toppings3Veg: 'toppings.3.vegetarian'
     },
     prepare: ({ title, media, ...toppings }) => {
       // 1. filter undefined toppings out
@@ -65,15 +67,15 @@ export default {
         return topping !== undefined && topping !== ' '
       })
 
-    //   console.log(tops)
+      //   console.log(tops)
       // 2. loop over all toppings to see if a pizza is all veggie
       const veggie = Object.values(toppings).filter(topping => {
         return topping === true || topping === false
       })
-    //   console.log(veggie)
+      //   console.log(veggie)
       // 3. return the preview object for the pizza
       return {
-        title: veggie.every(e => e === true) ? `${title} 🌱 `: title,
+        title: veggie.every(e => e === true) ? `${title} 🌱 ` : title,
         // title,
         media,
         subtitle: Object.values(tops).join(', ')
