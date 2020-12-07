@@ -1,5 +1,5 @@
 import { MdLocalPizza as icon } from 'react-icons/md'
-import { PriceInput } from '../components/Priceinputs'
+import { PriceInput } from '../components/Priceinput'
 export default {
   // Computer Name
   name: 'pizza',
