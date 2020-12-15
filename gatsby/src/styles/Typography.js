@@ -30,6 +30,8 @@ const Typography = createGlobalStyle`
     margin: 0;
     display: inline;
     line-height: 1;
+    height: fit-content;
+    width: fit-content;
   }
 
   .center {
