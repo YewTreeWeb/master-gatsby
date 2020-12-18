@@ -3,21 +3,10 @@ import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Pagination from '../components/Pagination'
-
-const SlicemasterGrid = styled.div`
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: auto auto 250px;
-`
+import Grid from '../components/CssGrid'
 
 const PersonStyles = styled.div`
   display: grid;
-  /* grid-template-rows: auto auto 1fr; */
-  /* Take your row sizing not from the pizzaStyles div, but from the  PizzaGridStyles grid */
-  /* @supports (grid-template-rows: subgrid) {
-    grid-template-rows: subgrid;
-  } */
   @supports not (grid-template-rows: subgrid) {
     --rows: auto 460px 250px;
   }
@@ -74,7 +63,7 @@ export default function SlicemastersPage ({ data, pageContext }) {
         skip={pageContext.skip}
         base='/slicemasters'
       />
-      <SlicemasterGrid>
+      <Grid size={'250px, 1fr'} rows={'auto auto 250px'}>
         {slicemasters.map(person => (
           <PersonStyles key={person.id}>
             <Link to={`/slicemaster/${person.slug.current}`}>
@@ -86,7 +75,7 @@ export default function SlicemastersPage ({ data, pageContext }) {
             <p className='description'>{person.description}</p>
           </PersonStyles>
         ))}
-      </SlicemasterGrid>
+      </Grid>
     </>
   )
 }
